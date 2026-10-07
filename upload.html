@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Clone - Upload Video</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="upload-body">
+
+    <!-- Upload Header -->
+    <div class="upload-header">
+        <h2>ভিডিও পোস্ট করুন</h2>
+    </div>
+
+    <!-- Upload Form Container -->
+    <div class="upload-container card">
+        
+        <!-- Video Select Box -->
+        <div class="file-select-box">
+            <i class="fas fa-cloud-upload-alt upload-icon"></i>
+            <p>আপনার ডিভাইস থেকে ভিডিও সিলেক্ট করুন</p>
+            <input type="file" id="video-file-input" accept="video/*">
+        </div>
+
+        <!-- Caption Input -->
+        <div class="input-group" style="margin-top: 20px;">
+            <input type="text" id="video-caption" placeholder="ক্যাপশন লিখুন... #hashtags">
+        </div>
+
+        <!-- Music Choice Input -->
+        <div class="input-group">
+            <input type="text" id="video-sound" placeholder="সাউন্ডের নাম লিখুন (ঐচ্ছিক)">
+        </div>
+
+        <!-- Post Button -->
+        <button id="post-btn" onclick="alert('ভিডিও সফলভাবে আপলোড হয়েছে!')">পোস্ট করুন</button>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <div class="bottom-nav">
+        <a href="feed.html"><i class="fas fa-home"></i><span>হোম</span></a>
+        <a href="#"><i class="fas fa-compass"></i><span>ডিসকভার</span></a>
+        <a href="upload.html" class="active upload-btn"><i class="fas fa-plus"></i></a>
+        <a href="#"><i class="fas fa-comment-alt"></i><span>ইনবক্স</span></a>
+        <a href="profile.html"><i class="fas fa-user"></i><span>প্রোফাইল</span></a>
+    </div>
+
+</body>
+  </html>
