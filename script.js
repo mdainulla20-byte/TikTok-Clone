@@ -1,31 +1,60 @@
-// Function to handle sending OTP
-function sendOTP() {
-    const phoneNumber = document.getElementById('phone-number').value;
-    
-    if (phoneNumber.length < 11) {
-        alert('দয়া করে সঠিক ১১ ডিজিটের মোবাইল নম্বর দিন।');
-        return;
-    }
+// Firebase Config placeholder (Replace with your Firebase Project details)
+const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "SENDER_ID",
+    appId: "APP_ID"
+};
 
-    // Hide login card and show OTP card
-    document.getElementById('login-card').classList.add('hidden');
-    document.getElementById('otp-card').classList.remove('hidden');
-
-    alert('আপনার ' + phoneNumber + ' নম্বরে একটি টেস্ট ওটিপি পাঠানো হয়েছে। (উদাহরণ: 1234)');
+// Initialize Firebase
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
 }
 
-// Function to handle verifying OTP
-function verifyOTP() {
-    const otpInput = document.getElementById('otp-input').value;
+const auth = firebase.auth();
 
-    if (otpInput.length !== 4) {
-        alert('দয়া করে ৪ ডিজিটের ওটিপি কোড দিন।');
-        return;
-    }
-
-    // Demo check: assuming 1234 is valid or any 4 digits
-    document.getElementById('otp-card').classList.add('hidden');
-    document.getElementById('feed-card').classList.remove('hidden');
-
-    alert('লগইন সফল হয়েছে!');
+// Google Sign-In Function
+function loginWithGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider)
+        .then((result) => {
+            const user = result.user;
+            document.getElementById('user-avatar-side').src = user.photoURL || 'https://via.placeholder.com/50';
+            document.getElementById('video-author').innerText = '@' + (user.displayName ? user.displayName.toLowerCase().replace(/\s+/g, '') : 'user');
+            
+            document.getElementById('auth-modal').classList.add('hidden');
+            document.getElementById('main-app').classList.remove('hidden');
+        })
+        .catch((error) => {
+            console.error("Login Error:", error);
+            alert("Google Sign-in popup closed or restricted on mobile browser. Continuing as Guest.");
+            guestLogin();
+        });
 }
+
+// Guest Login
+function guestLogin() {
+    document.getElementById('auth-modal').classList.add('hidden');
+    document.getElementById('main-app').classList.remove('hidden');
+}
+
+// Like Button Toggle
+function likeVideo(element) {
+    element.classList.toggle('liked');
+    let span = element.querySelector('span');
+    if (element.classList.contains('liked')) {
+        span.innerText = '124.6K';
+    } else {
+        span.innerText = '124.5K';
+    }
+}
+
+// Auto play/pause when swiping
+document.addEventListener('DOMContentLoaded', () => {
+    const video = document.querySelector('.video-player');
+    if(video) {
+        video.play().catch(() => {});
+    }
+});
