@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Clone - Login & OTP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Container for App -->
+    <div class="app-container">
+        
+        <!-- Login Card -->
+        <div id="login-card" class="card">
+            <h2>লগইন করুন</h2>
+            <p>আপনার মোবাইল নম্বর দিন</p>
+            <div class="input-group">
+                <input type="tel" id="phone-number" placeholder="017XXXXXXXX" maxlength="11">
+            </div>
+            <button id="send-otp-btn" onclick="sendOTP()">ওটিপি (OTP) পাঠান</button>
+        </div>
+
+        <!-- OTP Verification Card -->
+        <div id="otp-card" class="card hidden">
+            <h2>ওটিপি যাচাইকরণ</h2>
+            <p>আপনার নম্বরে পাঠানো ৪ ডিজিটের কোডটি দিন</p>
+            <div class="input-group">
+                <input type="text" id="otp-input" placeholder="XXXX" maxlength="4">
+            </div>
+            <button id="verify-otp-btn" onclick="verifyOTP()">যাচাই করুন</button>
+            <p class="resend-text">কোড পাননি? <a href="#" onclick="sendOTP()">আবার পাঠান</a></p>
+        </div>
+
+        <!-- Home / Feed Section (After Login) -->
+        <div id="feed-card" class="card hidden">
+            <h2>স্বাগতম টিকটক ক্লোনে!</h2>
+            <p>আপনার সফলভাবে লগইন হয়েছে।</p>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+              </html>
