@@ -3,43 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikTok Clone - Login & OTP</title>
+    <title>TikTok Clone</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
-    <!-- Container for App -->
-    <div class="app-container">
-        
-        <!-- Login Card -->
-        <div id="login-card" class="card">
-            <h2>লগইন করুন</h2>
-            <p>আপনার মোবাইল নম্বর দিন</p>
-            <div class="input-group">
-                <input type="tel" id="phone-number" placeholder="017XXXXXXXX" maxlength="11">
+    <!-- Auth Modal (Google Login Screen like TikTok) -->
+    <div id="auth-modal" class="auth-modal">
+        <div class="auth-card">
+            <h2>Log in to TikTok</h2>
+            <p>Manage your account, check notifications, comment on videos, and more.</p>
+            
+            <div class="auth-options">
+                <button class="auth-btn google-btn" onclick="loginWithGoogle()">
+                    <i class="fa-brands fa-google"></i> Continue with Google
+                </button>
+                <button class="auth-btn phone-btn" onclick="guestLogin()">
+                    <i class="fa-solid fa-user"></i> Continue as Guest
+                </button>
             </div>
-            <button id="send-otp-btn" onclick="sendOTP()">ওটিপি (OTP) পাঠান</button>
-        </div>
-
-        <!-- OTP Verification Card -->
-        <div id="otp-card" class="card hidden">
-            <h2>ওটিপি যাচাইকরণ</h2>
-            <p>আপনার নম্বরে পাঠানো ৪ ডিজিটের কোডটি দিন</p>
-            <div class="input-group">
-                <input type="text" id="otp-input" placeholder="XXXX" maxlength="4">
+            
+            <div class="auth-footer">
+                <p>By continuing, you agree to TikTok's Terms of Service and Privacy Policy.</p>
             </div>
-            <button id="verify-otp-btn" onclick="verifyOTP()">যাচাই করুন</button>
-            <p class="resend-text">কোড পাননি? <a href="#" onclick="sendOTP()">আবার পাঠান</a></p>
+        </div>
+    </div>
+
+    <!-- Main TikTok App Container -->
+    <div class="app-container hidden" id="main-app">
+        <!-- Top Header Navigation -->
+        <div class="top-nav">
+            <span class="nav-tab">Live</span>
+            <div class="center-tabs">
+                <span class="nav-tab">Following</span>
+                <span class="nav-tab active">For You</span>
+            </div>
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
         </div>
 
-        <!-- Home / Feed Section (After Login) -->
-        <div id="feed-card" class="card hidden">
-            <h2>স্বাগতম টিকটক ক্লোনে!</h2>
-            <p>আপনার সফলভাবে লগইন হয়েছে।</p>
+        <!-- Fullscreen Vertical Video Feed -->
+        <div class="video-feed" id="video-feed">
+            <!-- Sample TikTok Video Card 1 -->
+            <div class="video-card">
+                <video src="https://assets.mixkit.co/videos/preview/mixkit-vertical-shot-of-a-woman-dancing-40541-large.mp4" loop autoplay muted playsinline class="video-player"></video>
+                
+                <!-- Side Action Buttons -->
+                <div class="side-bar">
+                    <div class="profile-icon">
+                        <img src="https://via.placeholder.com/50" alt="user" id="user-avatar-side">
+                        <span class="follow-badge">+</span>
+                    </div>
+                    <div class="icon-btn" onclick="likeVideo(this)">
+                        <i class="fa-solid fa-heart"></i>
+                        <span>124.5K</span>
+                    </div>
+                    <div class="icon-btn">
+                        <i class="fa-solid fa-comment-dots"></i>
+                        <span>3,420</span>
+                    </div>
+                    <div class="icon-btn">
+                        <i class="fa-solid fa-bookmark"></i>
+                        <span>18.2K</span>
+                    </div>
+                    <div class="icon-btn">
+                        <i class="fa-solid fa-share"></i>
+                        <span>890</span>
+                    </div>
+                    <div class="music-disc">
+                        <img src="https://via.placeholder.com/40" class="disc-img">
+                    </div>
+                </div>
+
+                <!-- Video Description and Details -->
+                <div class="video-info">
+                    <h3 id="video-author">@creator_official</h3>
+                    <p class="video-desc">Trending TikTok dance style #viral #fyp #foryou 🎵</p>
+                    <div class="music-track">
+                        <i class="fa-solid fa-music"></i>
+                        <marquee>Original Sound - @creator_official</marquee>
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <!-- TikTok Bottom Navigation Bar -->
+        <div class="bottom-nav">
+            <a href="#" class="nav-item active"><i class="fa-solid fa-house"></i><span>Home</span></a>
+            <a href="#" class="nav-item"><i class="fa-solid fa-user-group"></i><span>Friends</span></a>
+            <a href="#" class="nav-item upload-tab"><div class="upload-btn"><i class="fa-solid fa-plus"></i></div></a>
+            <a href="#" class="nav-item"><i class="fa-solid fa-message"></i><span>Inbox</span></a>
+            <a href="#" class="nav-item" onclick="openProfile()"><i class="fa-solid fa-user"></i><span>Profile</span></a>
+        </div>
     </div>
 
     <script src="script.js"></script>
 </body>
-              </html>
+</html>
