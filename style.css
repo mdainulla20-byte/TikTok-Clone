@@ -1,0 +1,93 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container */
+.app-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+/* Card Design */
+.card {
+    background-color: #1e1e1e;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.card h2 {
+    margin-bottom: 10px;
+    color: #fe2c55; /* TikTok Red Theme */
+}
+
+.card p {
+    color: #aaa;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background-color: #2a2a2a;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: #fe2c55;
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #fe2c55;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #e02648;
+}
+
+.resend-text {
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+.resend-text a {
+    color: #fe2c55;
+    text-decoration: none;
+}
+
+/* Utility */
+.hidden {
+    display: none;
+}
