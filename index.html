@@ -13,7 +13,7 @@
 </head>
 <body>
 
-    <!-- Auth Modal (Google Login Screen like TikTok) -->
+    <!-- Auth Modal (Google Login Screen) -->
     <div id="auth-modal" class="auth-modal">
         <div class="auth-card">
             <h2>Log in to TikTok</h2>
@@ -46,58 +46,81 @@
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
         </div>
 
-        <!-- Fullscreen Vertical Video Feed -->
+        <!-- Fullscreen Vertical Video Scroll Feed -->
         <div class="video-feed" id="video-feed">
-            <!-- Sample TikTok Video Card 1 -->
+            
+            <!-- Video 1 -->
             <div class="video-card">
                 <video src="https://assets.mixkit.co/videos/preview/mixkit-vertical-shot-of-a-woman-dancing-40541-large.mp4" loop autoplay muted playsinline class="video-player"></video>
-                
-                <!-- Side Action Buttons -->
                 <div class="side-bar">
                     <div class="profile-icon">
-                        <img src="https://via.placeholder.com/50" alt="user" id="user-avatar-side">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" alt="user">
                         <span class="follow-badge">+</span>
                     </div>
-                    <div class="icon-btn" onclick="likeVideo(this)">
-                        <i class="fa-solid fa-heart"></i>
-                        <span>124.5K</span>
-                    </div>
-                    <div class="icon-btn">
-                        <i class="fa-solid fa-comment-dots"></i>
-                        <span>3,420</span>
-                    </div>
-                    <div class="icon-btn">
-                        <i class="fa-solid fa-bookmark"></i>
-                        <span>18.2K</span>
-                    </div>
-                    <div class="icon-btn">
-                        <i class="fa-solid fa-share"></i>
-                        <span>890</span>
-                    </div>
-                    <div class="music-disc">
-                        <img src="https://via.placeholder.com/40" class="disc-img">
-                    </div>
+                    <div class="icon-btn" onclick="likeVideo(this)"><i class="fa-solid fa-heart"></i><span>124.5K</span></div>
+                    <div class="icon-btn"><i class="fa-solid fa-comment-dots"></i><span>3,420</span></div>
+                    <div class="icon-btn"><i class="fa-solid fa-bookmark"></i><span>18.2K</span></div>
+                    <div class="icon-btn"><i class="fa-solid fa-share"></i><span>890</span></div>
+                    <div class="music-disc"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" class="disc-img"></div>
                 </div>
-
-                <!-- Video Description and Details -->
                 <div class="video-info">
-                    <h3 id="video-author">@creator_official</h3>
-                    <p class="video-desc">Trending TikTok dance style #viral #fyp #foryou 🎵</p>
-                    <div class="music-track">
-                        <i class="fa-solid fa-music"></i>
-                        <marquee>Original Sound - @creator_official</marquee>
-                    </div>
+                    <h3>@dance_star</h3>
+                    <p class="video-desc">ট্রেন্ডিং ডান্স ভিডিও! কেমন লাগলো জানাবেন 🔥 #dance #viral #fyp</p>
+                    <div class="music-track"><i class="fa-solid fa-music"></i><marquee>Original Sound - @dance_star</marquee></div>
                 </div>
             </div>
+
+            <!-- Video 2 -->
+            <div class="video-card">
+                <video src="https://assets.mixkit.co/videos/preview/mixkit-skater-performing-a-trick-in-a-skatepark-41618-large.mp4" loop muted playsinline class="video-player"></video>
+                <div class="side-bar">
+                    <div class="profile-icon">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" alt="user">
+                        <span class="follow-badge">+</span>
+                    </div>
+                    <div class="icon-btn" onclick="likeVideo(this)"><i class="fa-solid fa-heart"></i><span>85.2K</span></div>
+                    <div class="icon-btn"><i class="fa-solid fa-comment-dots"></i><span>1,120</span></div>
+                    <div class="icon-btn"><i class="fa-solid fa-bookmark"></i><span>5.4K</span></div>
+                    <div class="icon-btn"><i class="fa-solid fa-share"></i><span>450</span></div>
+                    <div class="music-disc"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" class="disc-img"></div>
+                </div>
+                <div class="video-info">
+                    <h3>@skate_king</h3>
+                    <p class="video-desc">আজকের বেস্ট স্টান্ট শট 🛹💥 #skate #sports #viral</p>
+                    <div class="music-track"><i class="fa-solid fa-music"></i><marquee>Cool Beats - Skate Music</marquee></div>
+                </div>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="video-card">
+                <video src="https://assets.mixkit.co/videos/preview/mixkit-man-holding-a-cute-cat-in-his-hands-41584-large.mp4" loop muted playsinline class="video-player"></video>
+                <div class="side-bar">
+                    <div class="profile-icon">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" alt="user">
+                        <span class="follow-badge">+</span>
+                    </div>
+                    <div class="icon-btn" onclick="likeVideo(this)"><i class="fa-solid fa-heart"></i><span>210.9K</span></div>
+                    <div class="icon-btn"><i class="fa-solid fa-comment-dots"></i><span>8,900</span></div>
+                    <div class="icon-btn"><i class="fa-solid fa-bookmark"></i><span>45.1K</span></div>
+                    <div class="icon-btn"><i class="fa-solid fa-share"></i><span>3,200</span></div>
+                    <div class="music-disc"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" class="disc-img"></div>
+                </div>
+                <div class="video-info">
+                    <h3>@cute_pets</h3>
+                    <p class="video-desc">বিড়ালটির মিষ্টি কাণ্ড দেখুন 🐱❤️ #cat #pets #funny</p>
+                    <div class="music-track"><i class="fa-solid fa-music"></i><marquee>Funny Pet Sound - TikTok</marquee></div>
+                </div>
+            </div>
+
         </div>
 
-        <!-- TikTok Bottom Navigation Bar -->
+        <!-- Working Bottom Navigation Bar -->
         <div class="bottom-nav">
-            <a href="#" class="nav-item active"><i class="fa-solid fa-house"></i><span>Home</span></a>
-            <a href="#" class="nav-item"><i class="fa-solid fa-user-group"></i><span>Friends</span></a>
-            <a href="#" class="nav-item upload-tab"><div class="upload-btn"><i class="fa-solid fa-plus"></i></div></a>
+            <a href="index.html" class="nav-item active"><i class="fa-solid fa-house"></i><span>Home</span></a>
+            <a href="feed.html" class="nav-item"><i class="fa-solid fa-compass"></i><span>Discover</span></a>
+            <a href="upload.html" class="nav-item upload-tab"><div class="upload-btn"><i class="fa-solid fa-plus"></i></div></a>
             <a href="#" class="nav-item"><i class="fa-solid fa-message"></i><span>Inbox</span></a>
-            <a href="#" class="nav-item" onclick="openProfile()"><i class="fa-solid fa-user"></i><span>Profile</span></a>
+            <a href="profile.html" class="nav-item"><i class="fa-solid fa-user"></i><span>Profile</span></a>
         </div>
     </div>
 
