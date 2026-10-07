@@ -1,4 +1,4 @@
-// Firebase Config placeholder (Replace with your Firebase Project details)
+// Firebase Configuration Placeholder
 const firebaseConfig = {
     apiKey: "YOUR_API_KEY",
     authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
@@ -8,28 +8,23 @@ const firebaseConfig = {
     appId: "APP_ID"
 };
 
-// Initialize Firebase
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 }
 
 const auth = firebase.auth();
 
-// Google Sign-In Function
+// Google Login
 function loginWithGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider)
         .then((result) => {
-            const user = result.user;
-            document.getElementById('user-avatar-side').src = user.photoURL || 'https://via.placeholder.com/50';
-            document.getElementById('video-author').innerText = '@' + (user.displayName ? user.displayName.toLowerCase().replace(/\s+/g, '') : 'user');
-            
             document.getElementById('auth-modal').classList.add('hidden');
             document.getElementById('main-app').classList.remove('hidden');
+            initVideos();
         })
         .catch((error) => {
-            console.error("Login Error:", error);
-            alert("Google Sign-in popup closed or restricted on mobile browser. Continuing as Guest.");
+            alert("Guest Mode Activated");
             guestLogin();
         });
 }
@@ -38,23 +33,36 @@ function loginWithGoogle() {
 function guestLogin() {
     document.getElementById('auth-modal').classList.add('hidden');
     document.getElementById('main-app').classList.remove('hidden');
+    initVideos();
 }
 
-// Like Button Toggle
+// Like Button
 function likeVideo(element) {
     element.classList.toggle('liked');
-    let span = element.querySelector('span');
-    if (element.classList.contains('liked')) {
-        span.innerText = '124.6K';
-    } else {
-        span.innerText = '124.5K';
-    }
 }
 
-// Auto play/pause when swiping
-document.addEventListener('DOMContentLoaded', () => {
-    const video = document.querySelector('.video-player');
-    if(video) {
-        video.play().catch(() => {});
-    }
-});
+// Play/Pause Video on Scroll
+function initVideos() {
+    const videos = document.querySelectorAll('.video-player');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.play().catch(()=>{});
+            } else {
+                entry.target.pause();
+            }
+        });
+    }, { threshold: 0.6 });
+
+    videos.forEach(video => {
+        observer.observe(video);
+        video.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        });
+    });
+}
